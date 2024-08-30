@@ -28,4 +28,22 @@ public class Card_Tests
         Assert.AreEqual("8", card.ShortName);
         Assert.AreEqual(diamonds, card.Suit);
     }
+    [TestMethod]
+    public void Card_Equality()
+    {
+        Card card1 = Card.Create("Eight", "8", Suit.Create("Diamonds", "♦️", Color.Red));
+        Card card2 = Card.Create("Eight", "8", Suit.Create("Diamonds", "♦️", Color.Red));
+        Assert.AreEqual(card1, card2);
+    }
+
+    [DataRow("Eight", "7", "♦️")]
+    [DataRow("Seven", "8", "♦️")]
+    [DataRow("Eight", "8", "♣️")]
+    [TestMethod]
+    public void Card_Inequality(string name, string shortName, string symbol)
+    {
+        Card card1 = Card.Create(name, shortName, Suit.Create("Diamonds", symbol, Color.Red));
+        Card card2 = Card.Create("Eight", "8", Suit.Create("Diamonds", "♦️", Color.Red));
+        Assert.AreNotEqual(card1, card2);
+    }
 }

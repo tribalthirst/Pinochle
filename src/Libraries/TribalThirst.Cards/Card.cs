@@ -1,6 +1,7 @@
-﻿namespace TribalThirst.Cards;
+﻿
+namespace TribalThirst.Cards;
 
-public class Card
+public class Card : ValueObject
 {
 
     public string Name { get; private set; }
@@ -24,6 +25,10 @@ public class Card
             : new Card(name, shortName, suit);
     }
 
-
-
+    protected override IEnumerable<IComparable> GetEqualityComponents()
+    {
+        yield return Name;
+        yield return ShortName;
+        yield return Suit;
+    }
 }

@@ -1,11 +1,10 @@
-﻿using System.Drawing;
-using static System.Char;
+﻿using static System.Char;
 using static System.String;
 
 namespace TribalThirst.Cards;
 
 
-public class Suit
+public class Suit : ValueObject
 {
     public string Name { get; private set; }
     public string Symbol { get; private set; }
@@ -28,6 +27,13 @@ public class Suit
     }
 
     private static bool IsValidSymbol(string symbol) =>
-        !IsNullOrWhiteSpace(symbol) &&
-        (symbol.Length == 1 || (symbol.Length == 2 && IsSymbol(symbol[0])));
+        !IsNullOrWhiteSpace(symbol)
+        && (symbol.Length == 1 || (symbol.Length == 2 && IsSymbol(symbol[0])));
+
+    protected override IEnumerable<IComparable> GetEqualityComponents()
+    {
+        yield return Name;
+        yield return Symbol;
+        yield return Color.Name;
+    }
 }

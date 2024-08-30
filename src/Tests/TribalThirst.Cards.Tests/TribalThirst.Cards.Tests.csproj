@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Librarires\TribalThirst.Cards\TribalThirst.Cards.csproj" />
+    <ProjectReference Include="..\..\Libraries\TribalThirst.Cards\TribalThirst.Cards.csproj" />
   </ItemGroup>
 
   <ItemGroup>
