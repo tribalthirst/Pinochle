@@ -24,6 +24,7 @@
             Assert.AreEqual(deck1, deck2);
         }
 
+
         [TestMethod]
         public void Pinochle_Deck_Contains_Correct_Cards()
         {
@@ -42,6 +43,5 @@
             Assert.AreEqual(8, deck.Cards.Count(c => c.Name == "Ten"));
             Assert.AreEqual(8, deck.Cards.Count(c => c.Name == "Ace"));
         }
-
     }
 }
