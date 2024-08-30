@@ -2,15 +2,28 @@
 
 public class Card
 {
-    public Card(string name, string shortName, Suit suit)
+
+    public string Name { get; private set; }
+    public Suit Suit { get; private set; }
+    public string ShortName { get; private set; }
+    private Card(string name, string shortName, Suit suit)
     {
-        Name = !string.IsNullOrWhiteSpace(name) ? name : throw new ArgumentException("Card name cannot be empty", nameof(name));
-        ShortName = !string.IsNullOrWhiteSpace(shortName) ? shortName : throw new ArgumentException("Card short name cannot be empty", nameof(shortName));
-        Suit = suit ?? throw new ArgumentException("Card suit cannot be null", nameof(suit));
+        Name = name;
+        ShortName = shortName;
+        Suit = suit;
     }
 
-    public string Name { get; }
-    public Suit Suit { get; }
-    public string ShortName { get; }
+    public static Card Create(string name, string shortName, Suit suit)
+    {
+        return string.IsNullOrWhiteSpace(name)
+            ? throw new ArgumentException("Card name cannot be empty", nameof(name))
+            : string.IsNullOrWhiteSpace(shortName)
+            ? throw new ArgumentException("Card short name cannot be empty", nameof(shortName))
+            : suit is null
+            ? throw new ArgumentException("Card suit cannot be null", nameof(suit))
+            : new Card(name, shortName, suit);
+    }
+
+
 
 }
