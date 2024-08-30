@@ -10,3 +10,7 @@ There are two directories under /src :
 * Tests - These are where the Test Libraries are held.  I had the hardest time creating a test project due to some cached offline nuget packages.  In my Visual Studio instance, I did add a new source for nuget, pointing to it's v3 feed.  I should probably put that inot a nuget.config file at the root of the src, so that any engineer besides me can pick it up.  However, since I am the only one developing it, I am passing.
 
 /documentation/* This is where all documentation will be stored.  I am just going to also think a little deeper here on what to add.  Eventually I should add like release documentation as well as other actions like github actions.
+
+## Packages
+I am using the following packages in the solution:
+CSharpFunctionalExtensions - This is a library that I have used in the past.  It is a library that provides a lot of functional programming constructs by Vladamir Khorikov.

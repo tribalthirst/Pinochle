@@ -27,5 +27,23 @@ public class Suit_Tests
         Assert.AreEqual(symbol, suit.Symbol);
         Assert.AreEqual(Color.FromName(color).Name, suit.Color.Name);
     }
+    [TestMethod]
+    public void Suit_Equality()
+    {
+        Suit suit1 = Suit.Create("Diamonds", "♦️", Color.Red);
+        Suit suit2 = Suit.Create("Diamonds", "♦️", Color.Red);
+        Assert.AreEqual(suit1, suit2);
+    }
+
+    [DataRow("Diamonds", "♦️", "Red")]
+    [DataRow("Hearts", "♥️", "Green")]
+    [DataRow("Spades", "♥️", "Red")]
+    [TestMethod]
+    public void Suit_Inequality(string name, string symbol, string color)
+    {
+        Suit suit1 = Suit.Create(name, symbol, Color.FromName(color));
+        Suit suit2 = Suit.Create("Hearts", "♥️", Color.Red);
+        Assert.AreNotEqual(suit1, suit2);
+    }
 
 }
